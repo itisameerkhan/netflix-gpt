@@ -3,15 +3,13 @@
   <img width="482" alt="Screenshot" src="./src/assets/logo.png">
 </div>
 
-<hr>
-
   <a href="#">
     <img src="https://img.shields.io/badge/Status-Ongoing-red?style=for-the-badge" alt="Status Ongoing">
   </a> &nbsp;&nbsp;&nbsp;
 
 <hr>
 
-**Welcome to NetflixGPT 👋**
+**Welcome to NetflixGPT**
 
 **NetflixGPT** is a web application that leverages the power of OpenAI's GPT-3 to enhance your Netflix experience. With this project, you can generate personalized movie and TV show recommendations based on your preferences, engage in natural language conversations to discover new content, and get detailed information about your favorite shows and movies.
 
@@ -47,7 +45,7 @@
 
 - **Secure Authentication:** User authentication is handled through Firebase, ensuring your data and interactions are safe and secure.
 
-## **Getting Started** 🌟
+## **Getting Started** 
 
 To run NetflixGPT locally and start exploring its features, follow these steps:
 

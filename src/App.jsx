@@ -1,11 +1,7 @@
-import './App.scss';
+import Body from './components/Body/Body';
 
 const App = () => {
-  return (
-    <div className="App">
-      <h1>App</h1>
-    </div>
-  )
+  return (<Body />)
 }
 
 export default App;
