@@ -3,10 +3,6 @@
   <img width="482" alt="Screenshot" src="./src/assets/logo.png">
 </div>
 
-  <a href="#">
-    <img src="https://img.shields.io/badge/Status-Ongoing-red?style=for-the-badge" alt="Status Ongoing">
-  </a> &nbsp;&nbsp;&nbsp;
-
 <hr>
 
 **Welcome to NetflixGPT**
