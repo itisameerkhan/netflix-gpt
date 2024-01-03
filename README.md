@@ -29,6 +29,12 @@
 
 - **OpenAI GPT-3:** The heart of NetflixGPT is powered by OpenAI's GPT-3, which enables natural language understanding and conversation generation.
 
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,sass,javascript,react,firebase,redux,mui,git,jest,vercel,vite,webpack" />
+  </a>
+</p>
+
 ## **Features**
 
 - **Personalized Recommendations:** Receive movie and TV show recommendations tailored to your interests and preferences.
