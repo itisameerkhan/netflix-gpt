@@ -63,7 +63,6 @@ To run NetflixGPT locally and start exploring its features, follow these steps:
    ```bash
    npm run dev
 
-
   ## **Contributing**
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
