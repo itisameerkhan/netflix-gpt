@@ -1,0 +1,108 @@
+@font-face 
+{
+    font-family: 'NetflixSansMedium';
+    src: url('../../fonts/NetflixSans/NetflixSans-Medium.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansBold';
+    src: url('../../fonts/NetflixSans/NetflixSans-Bold.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansLight';
+    src: url('../../fonts/NetflixSans/NetflixSans-Light.otf');;
+}
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+
+.login 
+{
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/15feb590-3d73-45e9-9e4a-2eb334c83921/IN-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    object-position: center;
+}
+.login-form-div 
+{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-form 
+{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.8);
+    color:white;
+    padding: 2rem 3rem;
+    gap: 0.5rem;
+    width: 450px;
+}
+
+.login-form 
+{
+    color:white;
+}
+.login-form label 
+{
+    font-family: $NetflixSansMedium;
+    font-size: 2rem;
+    color:white;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.login-form input 
+{
+    border:none;
+    outline: none;
+    padding:5px 10px;
+    width: 100%;
+    font-family: $NetflixSansLight;
+    font-size: 0.9rem;
+    height: 45px;
+    border-radius: 5px;
+    background-color: rgb(51,51,51);
+    color:white;
+    margin: 5px 0;
+}
+.sign-in-btn 
+{
+    width: 100%;
+    background-color: rgb(229,9,20);
+    height: 50px;
+    color: white;
+    font-family: $NetflixSansMedium;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+@media screen and (max-width:500px)
+{
+    .login 
+    {
+        background-color: #000000;
+        background-image: none;
+        padding: 0;
+        margin: 0;
+        
+    }
+    .login-form 
+    {
+        width: 100vw;
+        border:2px solid red;
+        padding:10px 10px;
+    }
+}

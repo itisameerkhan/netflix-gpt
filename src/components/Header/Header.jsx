@@ -1,9 +1,10 @@
 import './Header.scss';
+import netflixLogo from '../../assets/NetflixLogo.png';
 
 const Header = () => {
     return (
         <div className="header">
-            <h1>HEADER</h1>
+            <img src={netflixLogo} alt="netflix-logo" className='netflix-logo' />
         </div>
     )
 }
