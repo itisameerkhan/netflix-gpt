@@ -33,7 +33,7 @@
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,sass,javascript,react,firebase,redux,mui,git,jest,vercel,vite,webpack" />
+    <img src="https://skillicons.dev/icons?i=html,sass,javascript,react,firebase,redux,mui,git,jest,vercel,vite,webpack,vscode" />
   </a>
 </p>
 
