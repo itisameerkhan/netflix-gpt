@@ -19,6 +19,7 @@ $NetflixSansMedium: 'NetflixSansMedium';
 $NetflixSansBold: 'NetflixSansBold';
 
 $error-color: #e27a01;
+$error-color-2: #e87c03;
 
 .login 
 {
@@ -137,6 +138,16 @@ $error-color: #e27a01;
 {
     border-bottom: 2px solid $error-color !important;
 }
+.error-login-msg
+{
+    background-color: $error-color-2;
+    border-radius: 8px;
+    font-family: $NetflixSansLight;
+    font-size: 0.9rem;
+    padding:0.8rem 1rem;
+    margin: 0 auto;
+}
+
 @media screen and (max-width:500px)
 {
     .login 

@@ -11,10 +11,13 @@ const Login = () => {
     const [signIn, setSignIn] = useState(true);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [errorStatus, setErrorStatus] = useState([true, true, true]);
+    const [firebaseAuth, setFirebaseAuth] = useState([false, null]);
 
     const username = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
+
+    console.log(firebaseAuth);
 
     const handleClick = () => {
         setSignIn(!signIn);
@@ -28,8 +31,6 @@ const Login = () => {
         if(!validateEmail(email.current.value) || !validatePassword(password.current.value)) return;
 
         if(!signIn) {
-            // Sign Up logic
-            // const auth = getAuth();
             createUserWithEmailAndPassword(
                 auth,
                 email.current.value, 
@@ -38,11 +39,10 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
+                setFirebaseAuth([false, null]);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode + " - " + errorMessage);
+                setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
             });
         } else {
             //Sign in logic
@@ -50,11 +50,11 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
+                setFirebaseAuth([false, null]);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log('error message -> ' + errorCode + " " + errorMessage);
+                setFirebaseAuth([true, `Sorry, we can't find an account with this email address. Please try again or create a new account.`]);
+                console.log('login falid');
             });
         }
     }
@@ -64,6 +64,7 @@ const Login = () => {
             <Header />
             <div className="login-form-div">
                 <form className='login-form' onSubmit={(e) => e.preventDefault()}>
+                { firebaseAuth[0] && <p className='error-login-msg'>{firebaseAuth[1]}</p>}
                     <label>{signIn ? "Sign In" : "Sign Up"}</label>
                     <input 
                         type="text" 
@@ -91,7 +92,7 @@ const Login = () => {
                                 {passwordVisible ? "HIDE" : "SHOW"}
                         </span>
                     </div>
-                    {errorStatus[1] === false && <p className='error-message'>Your password must contain between 4 and 60 characters.</p>}
+                    {errorStatus[1] === false && <p className='error-message'>Your password must contain between 6 and 60 characters.</p>}
                     <button 
                         className='sign-in-btn'
                         onClick={handleButtonClick}>
