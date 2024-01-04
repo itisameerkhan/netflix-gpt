@@ -9,3 +9,18 @@
 {
     width: 12rem;
 }
+@media screen and (max-width: 500px)
+{
+    .netflix-logo 
+    {
+        width: 9rem;
+    }
+    .header
+    {
+        padding-top: 1.5rem;
+        padding-left: 1rem;
+        margin: 0;
+        // border:2px solid red;
+        width: 100vw;
+    }
+}

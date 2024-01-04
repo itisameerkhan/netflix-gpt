@@ -20,7 +20,7 @@ $NetflixSansBold: 'NetflixSansBold';
 
 .login 
 {
-    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/15feb590-3d73-45e9-9e4a-2eb334c83921/IN-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg');
     height: 100vh;
     width: 100vw;
     background-position: center;
@@ -28,6 +28,7 @@ $NetflixSansBold: 'NetflixSansBold';
     background-size: cover;
     object-fit: cover;
     object-position: center;
+    min-width: 300px;
 }
 .login-form-div 
 {
@@ -87,7 +88,20 @@ $NetflixSansBold: 'NetflixSansBold';
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 30px;
+    margin-top: 20px;
+}
+.new-to-netflix 
+{
+    font-family: $NetflixSansLight;
+    color: gray;
+    margin: 10px 0;
+}
+.new-to-netflix span 
+{
+    color: white;
+    cursor: pointer;
+    padding:0 5px; 
+    user-select: none;
 }
 @media screen and (max-width:500px)
 {
@@ -100,8 +114,8 @@ $NetflixSansBold: 'NetflixSansBold';
     }
     .login-form 
     {
-        width: 100vw;
-        border:2px solid red;
-        padding:10px 10px;
+        width: 100%;
+        padding:10px 20px;
+        margin-top: -100px;
     }
 }
