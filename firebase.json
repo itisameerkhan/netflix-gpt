@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "site": "netflix-gpt-namaste-react",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites":[
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "predeploy": ["npm run build"]
+
+  }
+}
