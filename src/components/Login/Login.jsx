@@ -18,7 +18,13 @@ const Login = () => {
     }
 
     const handleButtonClick = () => {
-       setErrorStatus([validateEmail(email.current.value), validatePassword(password.current.value), validateUsername(username.current.value)]);
+       setErrorStatus([validateEmail(email.current.value),
+        validatePassword(password.current.value),
+        validateUsername(username.current.value)]);
+
+        if(!validateEmail(email.current.value) || !validatePassword(password.current.value)) return;
+        
+        
     }
 
     return (
