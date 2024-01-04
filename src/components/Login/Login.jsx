@@ -1,12 +1,13 @@
 import './Login.scss';
 import Header from '../Header/Header';
 import { useRef, useState } from 'react';
-import { checkValidData } from '../../utils/validate';
+import { validateEmail, validatePassword } from '../../utils/validate';
 
 const Login = () => {
 
     const [signUp, setSignUp] = useState(true);
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [errorStatus, setErrorStatus] = useState([true, true]);
 
     const username = useRef(null);
     const email = useRef(null);
@@ -17,9 +18,7 @@ const Login = () => {
     }
 
     const handleButtonClick = () => {
-        console.log(email);
-        console.log(password);
-        // checkValidData();
+       setErrorStatus([validateEmail(email.current.value), validatePassword(password.current.value)]);
     }
 
     return (
@@ -34,14 +33,25 @@ const Login = () => {
                         style={{display: signUp ===true ? 'none' : 'block'}}
                         ref={username} 
                     />
-                    <input type="text" placeholder='Email address' ref={email} />
+                    <input 
+                        type="text" 
+                        placeholder='Email address' 
+                        ref={email}
+                        className={`${errorStatus[0] ? 'none' : 'error-line'}`}
+                    />
+                    {errorStatus[0] === false &&  <p className='error-message'>Please enter a valid email address</p>}
                     <div className="password-input">
-                        <input type={passwordVisible ? 'text' : 'password'} placeholder='Password' ref={password} className='password-int' />
-                        <span
+                        <input 
+                            type={passwordVisible ? 'text' : 'password'} 
+                            placeholder='Password' ref={password} 
+                            className={`${errorStatus[1] ? 'none' : 'error-line'} password-int`}
+                        />
+                        <span 
                             onClick={() => setPasswordVisible(!passwordVisible)}>
                                 {passwordVisible ? "HIDE" : "SHOW"}
                         </span>
                     </div>
+                    {errorStatus[1] === false && <p className='error-message'>Your password must contain between 4 and 60 characters.</p>}
                     <button 
                         className='sign-in-btn'
                         onClick={handleButtonClick}>

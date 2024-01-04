@@ -18,6 +18,8 @@ $NetflixSansLight: 'NetflixSansLight';
 $NetflixSansMedium: 'NetflixSansMedium';
 $NetflixSansBold: 'NetflixSansBold';
 
+$error-color: #e27a01;
+
 .login 
 {
     background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg');
@@ -28,7 +30,7 @@ $NetflixSansBold: 'NetflixSansBold';
     background-size: cover;
     object-fit: cover;
     object-position: center;
-    min-width: 300px;
+    min-width: 350px;
 }
 .login-form-div 
 {
@@ -44,7 +46,7 @@ $NetflixSansBold: 'NetflixSansBold';
     justify-content: center;
     flex-direction: column;
     border-radius: 10px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.85);
     color:white;
     padding: 2rem 3rem;
     gap: 0.5rem;
@@ -71,7 +73,6 @@ $NetflixSansBold: 'NetflixSansBold';
         padding-right: 60px;
     }
 }
-
 .login-form 
 {
     color:white;
@@ -123,6 +124,17 @@ $NetflixSansBold: 'NetflixSansBold';
     cursor: pointer;
     padding:0 5px; 
     user-select: none;
+}
+.error-message 
+{
+    font-family: $NetflixSansLight;
+    color: $error-color;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+.error-line
+{
+    border-bottom: 2px solid $error-color !important;
 }
 @media screen and (max-width:500px)
 {
