@@ -1,13 +1,13 @@
 import './Login.scss';
 import Header from '../Header/Header';
 import { useRef, useState } from 'react';
-import { validateEmail, validatePassword } from '../../utils/validate';
+import { validateEmail, validatePassword, validateUsername } from '../../utils/validate';
 
 const Login = () => {
 
     const [signUp, setSignUp] = useState(true);
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [errorStatus, setErrorStatus] = useState([true, true]);
+    const [errorStatus, setErrorStatus] = useState([true, true, true]);
 
     const username = useRef(null);
     const email = useRef(null);
@@ -18,7 +18,7 @@ const Login = () => {
     }
 
     const handleButtonClick = () => {
-       setErrorStatus([validateEmail(email.current.value), validatePassword(password.current.value)]);
+       setErrorStatus([validateEmail(email.current.value), validatePassword(password.current.value), validateUsername(username.current.value)]);
     }
 
     return (
@@ -30,9 +30,11 @@ const Login = () => {
                     <input 
                         type="text" 
                         placeholder='Username' 
-                        style={{display: signUp ===true ? 'none' : 'block'}}
+                        style={{display: signUp === true ? 'none' : 'block'}}
                         ref={username} 
+                        className={`${errorStatus[2] ? 'none' : 'error-line'} password-int`}
                     />
+                    {!signUp && !errorStatus[2] && <p className='error-message'>Please enter a valid username</p>}
                     <input 
                         type="text" 
                         placeholder='Email address' 

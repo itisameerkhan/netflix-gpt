@@ -8,3 +8,7 @@ export const validatePassword = (password) => {
     const isPasswordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
     return isPasswordValid;
 }
+
+export const validateUsername = (username) => {
+    return username.length >= 6;
+}
