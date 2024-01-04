@@ -2,10 +2,13 @@ import './Login.scss';
 import Header from '../Header/Header';
 import { useRef, useState } from 'react';
 import { validateEmail, validatePassword, validateUsername } from '../../utils/validate';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../utils/firebase';
+
 
 const Login = () => {
 
-    const [signUp, setSignUp] = useState(true);
+    const [signIn, setSignIn] = useState(true);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [errorStatus, setErrorStatus] = useState([true, true, true]);
 
@@ -14,7 +17,7 @@ const Login = () => {
     const password = useRef(null);
 
     const handleClick = () => {
-        setSignUp(!signUp);
+        setSignIn(!signIn);
     }
 
     const handleButtonClick = () => {
@@ -23,8 +26,37 @@ const Login = () => {
         validateUsername(username.current.value)]);
 
         if(!validateEmail(email.current.value) || !validatePassword(password.current.value)) return;
-        
-        
+
+        if(!signIn) {
+            // Sign Up logic
+            // const auth = getAuth();
+            createUserWithEmailAndPassword(
+                auth,
+                email.current.value, 
+                password.current.value
+            )
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode + " - " + errorMessage);
+            });
+        } else {
+            //Sign in logic
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log('error message -> ' + errorCode + " " + errorMessage);
+            });
+        }
     }
 
     return (
@@ -32,15 +64,15 @@ const Login = () => {
             <Header />
             <div className="login-form-div">
                 <form className='login-form' onSubmit={(e) => e.preventDefault()}>
-                    <label>{signUp ? "Sign In" : "Sign Up"}</label>
+                    <label>{signIn ? "Sign In" : "Sign Up"}</label>
                     <input 
                         type="text" 
                         placeholder='Username' 
-                        style={{display: signUp === true ? 'none' : 'block'}}
+                        style={{display: signIn === true ? 'none' : 'block'}}
                         ref={username} 
                         className={`${errorStatus[2] ? 'none' : 'error-line'} password-int`}
                     />
-                    {!signUp && !errorStatus[2] && <p className='error-message'>Please enter a valid username</p>}
+                    {!signIn && !errorStatus[2] && <p className='error-message'>Please enter a valid username</p>}
                     <input 
                         type="text" 
                         placeholder='Email address' 
@@ -63,10 +95,10 @@ const Login = () => {
                     <button 
                         className='sign-in-btn'
                         onClick={handleButtonClick}>
-                            {signUp === true ? "Sign In" : "Sign Up"}
+                            {signIn === true ? "Sign In" : "Sign Up"}
                     </button>
-                    <p className='new-to-netflix'>{signUp ? "New to Netflix?" : "Already registered?"} 
-                        <span onClick={handleClick}>{signUp ? "Sign up now." : "Sign in now."}</span>
+                    <p className='new-to-netflix'>{signIn ? "New to Netflix?" : "Already registered?"} 
+                        <span onClick={handleClick}>{signIn ? "Sign up now." : "Sign in now."}</span>
                     </p>
                 </form>
             </div>
