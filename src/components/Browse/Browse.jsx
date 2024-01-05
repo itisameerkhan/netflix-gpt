@@ -1,9 +1,10 @@
+import Header from '../Header/Header';
 import './Browse.scss';
 
 const Browse = () => {
     return (
         <div className="browse">
-            <h1>BROWSE</h1>
+            <Header />
         </div>
     )
 }

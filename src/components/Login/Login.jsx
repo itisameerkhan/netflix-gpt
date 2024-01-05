@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { validateEmail, validatePassword, validateUsername } from '../../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../utils/firebase';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -12,12 +13,11 @@ const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [errorStatus, setErrorStatus] = useState([true, true, true]);
     const [firebaseAuth, setFirebaseAuth] = useState([false, null]);
+    const navigate = useNavigate();
 
     const username = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
-
-    console.log(firebaseAuth);
 
     const handleClick = () => {
         setSignIn(!signIn);
@@ -39,21 +39,23 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setFirebaseAuth([false, null]);
+                navigate('/browse');
             })
             .catch((error) => {
                 setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
+                navigate('/');
             });
         } else {
             //Sign in logic 
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                // console.log(user);
                 setFirebaseAuth([false, null]);
+                navigate('/browse');
             })
             .catch((error) => {
                 setFirebaseAuth([true, `Sorry, we can't find an account with this email address. Please try again or create a new account.`]);
-                // console.log('login falid');
+                navigate('/');
             });
         }
     }
