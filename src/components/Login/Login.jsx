@@ -15,6 +15,7 @@ const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [errorStatus, setErrorStatus] = useState([true, true, true]);
     const [firebaseAuth, setFirebaseAuth] = useState([false, null]);
+    const [loader, setLoader] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -31,7 +32,11 @@ const Login = () => {
         validatePassword(password.current.value),
         validateUsername(username.current.value)]);
 
-        if(!validateEmail(email.current.value) || !validatePassword(password.current.value)) return;
+        if(!validateEmail(email.current.value) || !validatePassword(password.current.value)) {
+            console.log('invalid credentials');
+            setLoader(false);
+            return
+        };
 
         if(!signIn) {
             createUserWithEmailAndPassword(
@@ -41,7 +46,6 @@ const Login = () => {
             )
             .then((userCredential) => {
                 const user = userCredential.user;
-
                 updateProfile(user, {
                     displayName: username.current.value, 
                     photoURL: "https://avatars.githubusercontent.com/u/106725517?v=4"
@@ -49,8 +53,10 @@ const Login = () => {
                     const {uid, email, displayName, photoURL } = auth.currentUser;     
                     console.log('auth current user -> ' + auth.currentUser);   
                     dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+                    setLoader(false);
                     navigate('/browse');
                 }).catch((error) => {
+                    setLoader(false);
                     navigate('/error');
                     console.log(error.message);
                 });
@@ -58,6 +64,7 @@ const Login = () => {
                 setFirebaseAuth([false, null]);
             })
             .catch((error) => {
+                setLoader(false);
                 setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
                 navigate('/');
             });
@@ -67,10 +74,12 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setFirebaseAuth([false, null]);
+                setLoader(false);
                 navigate('/browse');
             })
             .catch((error) => {
                 setFirebaseAuth([true, `Sorry, we can't find an account with this email address. Please try again or create a new account.`]);
+                setLoader(false);
                 navigate('/');
             });
         }
@@ -112,8 +121,13 @@ const Login = () => {
                     {errorStatus[1] === false && <p className='error-message'>Your password must contain between 6 and 60 characters.</p>}
                     <button 
                         className='sign-in-btn'
-                        onClick={handleButtonClick}>
-                            {signIn === true ? "Sign In" : "Sign Up"}
+                        onClick={() => {
+                            setLoader(true);
+                            handleButtonClick();
+                        }}>
+                            {loader === true ? 
+                            <span className="loader"></span> :
+                            <span>{signIn === true ? "Sign In" : "Sign Up"}</span> }
                     </button>
                     <p className='new-to-netflix'>{signIn ? "New to Netflix?" : "Already registered?"} 
                         <span onClick={handleClick}>{signIn ? "Sign up now." : "Sign in now."}</span>
