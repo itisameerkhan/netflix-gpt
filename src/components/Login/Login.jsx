@@ -38,23 +38,22 @@ const Login = () => {
             )
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
                 setFirebaseAuth([false, null]);
             })
             .catch((error) => {
                 setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
             });
         } else {
-            //Sign in logic
+            //Sign in logic 
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
+                // console.log(user);
                 setFirebaseAuth([false, null]);
             })
             .catch((error) => {
                 setFirebaseAuth([true, `Sorry, we can't find an account with this email address. Please try again or create a new account.`]);
-                console.log('login falid');
+                // console.log('login falid');
             });
         }
     }
@@ -64,7 +63,7 @@ const Login = () => {
             <Header />
             <div className="login-form-div">
                 <form className='login-form' onSubmit={(e) => e.preventDefault()}>
-                { firebaseAuth[0] && <p className='error-login-msg'>{firebaseAuth[1]}</p>}
+                {firebaseAuth[0] && <p className='error-login-msg'>{firebaseAuth[1]}</p>}
                     <label>{signIn ? "Sign In" : "Sign Up"}</label>
                     <input 
                         type="text" 

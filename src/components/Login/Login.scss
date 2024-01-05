@@ -146,6 +146,11 @@ $error-color-2: #e87c03;
     font-size: 0.9rem;
     padding:0.8rem 1rem;
     margin: 0 auto;
+
+    span 
+    {
+        text-decoration: underline;
+    }
 }
 
 @media screen and (max-width:500px)
