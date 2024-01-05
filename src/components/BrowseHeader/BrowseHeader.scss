@@ -1,0 +1,96 @@
+@import url(../Login/Login.scss);
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+$transparent-black: rgba(0,0,0,0.85);
+
+.browse-header 
+{
+    background: linear-gradient(to bottom, #000000, transparent);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family:$NetflixSansLight;
+    padding: 0 2rem;
+}
+.browse-avatar
+{
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+}
+.browse-header-left 
+{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.browse-header-nav-ul 
+{
+    display: flex;
+    list-style-type: none;
+    gap: 1rem;
+    color: gray;
+    font-family: $NetflixSansLight;
+
+    .home-li 
+    {
+        color:white;
+    }
+    li 
+    {
+        cursor: pointer;
+        &:hover 
+        {
+            color:white;
+        }
+    }
+}
+.browse-header-right 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    .fa-magnifying-glass 
+    {
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+    .avatar-div 
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        position: relative;
+    }
+}
+.browse-sign-in 
+{
+    background-color: $transparent-black;
+    position: absolute;
+    top: 2.5rem;
+    right: -1.5rem;
+    width: 10rem;
+    padding: 15px 5px;
+    border-radius: 5px;
+    text-align: center;
+
+    p { 
+        &:hover { text-decoration: underline; }
+        &::after
+        {
+            content: "";
+            background-color: $transparent-black;
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+        }
+    }
+}

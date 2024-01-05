@@ -2,9 +2,11 @@ import './Login.scss';
 import Header from '../Header/Header';
 import { useRef, useState } from 'react';
 import { validateEmail, validatePassword, validateUsername } from '../../utils/validate';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../utils/userSlice';
 
 
 const Login = () => {
@@ -14,6 +16,7 @@ const Login = () => {
     const [errorStatus, setErrorStatus] = useState([true, true, true]);
     const [firebaseAuth, setFirebaseAuth] = useState([false, null]);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const username = useRef(null);
     const email = useRef(null);
@@ -38,8 +41,21 @@ const Login = () => {
             )
             .then((userCredential) => {
                 const user = userCredential.user;
+
+                updateProfile(user, {
+                    displayName: username.current.value, 
+                    photoURL: "https://avatars.githubusercontent.com/u/106725517?v=4"
+                }).then(() => {
+                    const {uid, email, displayName, photoURL } = auth.currentUser;     
+                    console.log('auth current user -> ' + auth.currentUser);   
+                    dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+                    navigate('/browse');
+                }).catch((error) => {
+                    navigate('/error');
+                    console.log(error.message);
+                });
+
                 setFirebaseAuth([false, null]);
-                navigate('/browse');
             })
             .catch((error) => {
                 setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
