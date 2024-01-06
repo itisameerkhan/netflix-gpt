@@ -32,7 +32,6 @@ const BrowseHeader = () => {
         const unsubsribe = onAuthStateChanged(auth, (user) => {
         if (user) {
             const {uid, email, displayName, photoURL } = user;
-            console.log('in auth state change');
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
             navigate('/browse');
         } else {
