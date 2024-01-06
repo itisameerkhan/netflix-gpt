@@ -7,18 +7,16 @@ const VideoBackground = ({movieId}) => {
 
     useMovieTrailer(movieId);
     const trailerVideo = useSelector(store => store.movies.trailerVideo);
-    console.log(trailerVideo);
 
     return (
         <div className="video-background">
            <iframe 
-                width="560" 
-                height="315" 
-                src={`https://www.youtube.com/embed/${trailerVideo?.key}?si=a9xa1HFT10T71m_V}`}
+                className='video-background-iframe'
+                src={`https://www.youtube.com/embed/${trailerVideo?.key}?&autoplay=1&mute=1&loop=1&controls=0`}
                 title="YouTube video player" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowFullScreen>
+                >
             </iframe>
         </div>
     )

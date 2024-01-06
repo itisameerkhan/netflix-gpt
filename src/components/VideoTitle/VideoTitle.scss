@@ -6,14 +6,18 @@ $NetflixSansMedium: 'NetflixSansMedium';
 $NetflixSansBold: 'NetflixSansBold';
 $BebasNeue: 'Bebas Neue';
 $transparent-black: rgba(0,0,0,0.85);
+$transparent-black-2: rgba(0,0,0,0.5);
 
 
 .video-title 
 {
     box-sizing: border-box;
-    height: 100vh;
+    height: 117vh;
     padding: 15rem 5rem;
     width: 50%;
+    position: absolute;
+    background: linear-gradient(to right,#000000,$transparent-black-2,transparent);
+    aspect-ratio: 16/9;
 
     h1 
     {
