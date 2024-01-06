@@ -14,6 +14,7 @@ $transparent-black: rgba(0,0,0,0.85);
     justify-content: space-between;
     font-family:$NetflixSansLight;
     padding: 0 2rem;
+    min-width: 350px;
 }
 .browse-avatar
 {
@@ -80,7 +81,11 @@ $transparent-black: rgba(0,0,0,0.85);
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
 }
-  
+.li-div-1 
+{
+    display: flex;
+    gap: 1rem;
+}
 @keyframes rotation {
     0%{
         transform: rotate(0deg);
@@ -112,5 +117,70 @@ $transparent-black: rgba(0,0,0,0.85);
             top: -10px;
             left: 50%;
         }
+    }
+}
+.home-li-arrow 
+{
+    display: none;
+}
+@media screen and (max-width: 900px)
+{
+    .browse-header-nav-ul 
+    {
+        flex-direction: column;
+        position: relative;
+        
+        .li-div-1
+        {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 10rem;
+            padding:20px 20px;
+            border-radius: 8px;
+            top: 1.5rem;
+            left: -2rem;
+            background-color: $transparent-black;
+        }
+    }
+    .home-li 
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .home-li-arrow 
+    {
+        display: block;
+    }
+}
+@media screen and (max-width: 600px)
+{
+    .browse-header
+    {
+        padding:0;
+        padding-top: 0.3rem;
+        padding-right: 0.2rem;
+        margin: 0;
+    }
+    .browse-header-left
+    {
+        gap: 0.1rem;
+    }
+    .browse-sign-in
+    {
+        top: 3rem;
+        left: -6.5rem;
+    }
+    .browse-header-right
+    {
+        gap: 1rem;
+        padding-right: 0.2rem;
+    }
+    .browse-avatar 
+    {
+        height: 40px;
+        width: 40px;
     }
 }

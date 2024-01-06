@@ -14,6 +14,8 @@ import { useDispatch } from 'react-redux';
 const BrowseHeader = () => {
 
     const [avatarHover, setAvatarHover] = useState(false);
+    const [homeNavRes, setHomeNavRes] = useState(false);
+    const [windoWidth, setWindowWidth] = useState(window.innerWidth); 
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
@@ -40,8 +42,15 @@ const BrowseHeader = () => {
         }
         });
 
+        const calculateWidth = () => {  setWindowWidth(window.innerWidth); }
+
+        window.addEventListener('resize', calculateWidth);
+
         // unsubsribe when component unmount
-        return () => unsubsribe();
+        return () => {
+            unsubsribe();
+            window.removeEventListener('resize', calculateWidth);
+        }
 
     },[])
 
@@ -52,11 +61,20 @@ const BrowseHeader = () => {
                 <img src={netflixLogo} alt="netflix-logo" className='netflix-logo' />
                 <div className="browse-header-nav">
                     <div className="browse-header-nav-ul">
-                        <li className='home-li'>Home</li>
-                        <li>TV Shows</li>
-                        <li>Movies</li>
-                        <li>News & Popular</li>
-                        <li>My List</li>
+                        <li     
+                            className='home-li'
+                            onClick={() => setHomeNavRes(!homeNavRes)}>
+                                Home
+                                <i className={`fa-solid ${homeNavRes ? 'fa-sort-up' : 'fa-sort-down'} home-li-arrow`}></i>
+                        </li>
+                        <div 
+                            className="li-div-1"
+                            style={{display: `${windoWidth <= 900 ? (homeNavRes ? 'flex' : 'none') : 'flex'}`}}>
+                            <li>TV Shows</li>
+                            <li>Movies</li>
+                            <li>News & Popular</li>
+                            <li>My List</li>
+                        </div>
                     </div>
                 </div>
             </div>
