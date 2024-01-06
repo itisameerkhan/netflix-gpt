@@ -13,7 +13,6 @@ const BrowseHeader = () => {
     const handleSignOut = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-
             navigate('/');
         }).catch((error) => {
             navigate('/error')
