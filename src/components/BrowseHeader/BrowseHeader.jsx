@@ -29,7 +29,7 @@ const BrowseHeader = () => {
 
     useEffect(() => {
         const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
+        const unsubsribe = onAuthStateChanged(auth, (user) => {
         if (user) {
             const {uid, email, displayName, photoURL } = user;
             console.log('in auth state change');
@@ -40,6 +40,10 @@ const BrowseHeader = () => {
             navigate('/')
         }
         });
+
+        // unsubsribe when component unmount
+        return () => unsubsribe();
+
     },[])
 
     if(!user) return <Header />
