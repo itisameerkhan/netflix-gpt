@@ -1,9 +1,9 @@
 import './VideoBackground.scss';
 
-const VideoBackground = () => {
+const VideoBackground = ({movieId}) => {
     return (
         <div className="video-background">
-            <h1>Video background</h1>
+           <h1>video background</h1>
         </div>
     )
 }

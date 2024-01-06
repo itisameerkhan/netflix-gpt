@@ -1,0 +1,59 @@
+@import url(../Login/Login.scss);
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+$BebasNeue: 'Bebas Neue';
+$transparent-black: rgba(0,0,0,0.85);
+
+
+.video-title 
+{
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 15rem 5rem;
+    width: 50%;
+
+    h1 
+    {
+        font-size: 5rem;
+        font-family: $BebasNeue;
+        letter-spacing: 3px;
+    }
+    p
+    {
+        font-family: $NetflixSansLight;
+        line-height: 30px;
+        font-size: 1.1rem;
+    }
+    button
+    {
+        padding:0.7rem 2rem;
+        gap: 0.2rem;
+        font-family: $NetflixSansMedium;
+        font-size: 1rem;
+        border:none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 10rem;
+        margin: 1rem 0;
+
+        &:nth-child(odd) 
+        {
+            background-color: white;
+            &:hover { background-color: rgb(211, 211, 211); }
+        }
+        &:nth-child(even) 
+        {
+            background-color: #383838;
+            color:white;
+            margin-left: 1rem;
+            &:hover { background-color: #545454 }
+        }
+        i 
+        {
+            padding-right: 5px;
+        }
+    }
+}
