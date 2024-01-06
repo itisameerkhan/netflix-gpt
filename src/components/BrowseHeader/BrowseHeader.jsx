@@ -2,24 +2,48 @@ import './BrowseHeader.scss';
 import netflixLogo from '../../assets/NetflixLogo.png';
 import avatar from '../../assets/avatar.png';
 import { useState } from 'react';
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut,onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Header from '../Header/Header';
+import { useEffect } from 'react';
+import { addUser, removeUser } from '../../utils/userSlice';
+import { useDispatch } from 'react-redux';
+
 
 const BrowseHeader = () => {
 
     const [avatarHover, setAvatarHover] = useState(false);
     const navigate = useNavigate();
+    const user = useSelector((store) => store.user);
+    const dispatch = useDispatch();
 
     const handleSignOut = () => {
         const auth = getAuth();
         signOut(auth).then(() => {
-            navigate('/');
+            // navigate('/');
         }).catch((error) => {
             navigate('/error')
         });
     }
 
-    return (
+    useEffect(() => {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const {uid, email, displayName, photoURL } = user;
+            console.log('in auth state change');
+            dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+            navigate('/browse');
+        } else {
+            dispatch(removeUser());
+            navigate('/')
+        }
+        });
+    },[])
+
+    if(!user) return <Header />
+    else return (
         <div className="browse-header">
             <div className="browse-header-left">
                 <img src={netflixLogo} alt="netflix-logo" className='netflix-logo' />

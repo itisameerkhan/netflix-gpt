@@ -1,12 +1,11 @@
 import './Login.scss';
-import Header from '../Header/Header';
 import { useRef, useState } from 'react';
 import { validateEmail, validatePassword, validateUsername } from '../../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../utils/userSlice';
+import BrowseHeader from '../BrowseHeader/BrowseHeader';
 
 
 const Login = () => {
@@ -16,7 +15,6 @@ const Login = () => {
     const [errorStatus, setErrorStatus] = useState([true, true, true]);
     const [firebaseAuth, setFirebaseAuth] = useState([false, null]);
     const [loader, setLoader] = useState(false);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const username = useRef(null);
@@ -54,10 +52,10 @@ const Login = () => {
                     console.log('auth current user -> ' + auth.currentUser);   
                     dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
                     setLoader(false);
-                    navigate('/browse');
+                    // navigate('/browse');
                 }).catch((error) => {
                     setLoader(false);
-                    navigate('/error');
+                    // navigate('/error');
                     console.log(error.message);
                 });
 
@@ -66,7 +64,7 @@ const Login = () => {
             .catch((error) => {
                 setLoader(false);
                 setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
-                navigate('/');
+                // navigate('/');
             });
         } else {
             //Sign in logic 
@@ -75,19 +73,20 @@ const Login = () => {
                 const user = userCredential.user;
                 setFirebaseAuth([false, null]);
                 setLoader(false);
-                navigate('/browse');
+                // navigate('/browse');
             })
             .catch((error) => {
                 setFirebaseAuth([true, `Sorry, we can't find an account with this email address. Please try again or create a new account.`]);
                 setLoader(false);
-                navigate('/');
+                // navigate('/');
             });
         }
     }
 
     return (
         <div className="login">
-            <Header />
+            {/* <Header /> */}
+            <BrowseHeader />
             <div className="login-form-div">
                 <form className='login-form' onSubmit={(e) => e.preventDefault()}>
                 {firebaseAuth[0] && <p className='error-login-msg'>{firebaseAuth[1]}</p>}
