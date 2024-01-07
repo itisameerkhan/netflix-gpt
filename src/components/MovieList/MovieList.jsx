@@ -2,12 +2,13 @@ import MovieCard from '../MovieCard/MovieCard';
 import './MovieList.scss';
 
 const MovieList = ({title, movies}) => {
-    console.log(movies);
-    return (
+    return movies &&  (
         <div className="movie-list">
             <h1>{title}</h1>
-            <div className="movies-card-1">
-            
+            <div className="movies-cards-1">
+                {movies.map((movie) => (
+                    <MovieCard data={movie} key={movie?.id} />
+                ))}
             </div>
         </div>
     )

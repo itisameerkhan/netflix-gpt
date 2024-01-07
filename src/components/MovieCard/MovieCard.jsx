@@ -1,9 +1,14 @@
 import './MovieCard.scss';
+import { TMDB_IMAGE_CDN } from '../../utils/constants';
 
-const MovieCard = () => {
+const MovieCard = ({data}) => {
     return (
         <div className="movie-card">
-            <h1>movew card</h1>
+            <img 
+                src={TMDB_IMAGE_CDN + data?.poster_path} 
+                alt="movie-poster"
+                className='movie-card-1-img'
+            />
         </div>
     )
 }
