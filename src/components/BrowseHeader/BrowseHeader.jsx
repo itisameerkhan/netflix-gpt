@@ -16,6 +16,7 @@ const BrowseHeader = () => {
     const [avatarHover, setAvatarHover] = useState(false);
     const [homeNavRes, setHomeNavRes] = useState(false);
     const [windoWidth, setWindowWidth] = useState(window.innerWidth); 
+    const [windowScroll, setWindowScroll] = useState(false);
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
@@ -46,17 +47,24 @@ const BrowseHeader = () => {
 
         window.addEventListener('resize', calculateWidth);
 
+        const handleScroll = () => { setWindowScroll(window.scrollY > 100) };
+
+        setWindowScroll();
+
+        window.addEventListener('scroll', handleScroll);
+
         // unsubsribe when component unmount
         return () => {
             unsubsribe();
             window.removeEventListener('resize', calculateWidth);
+            window.removeEventListener('scroll', handleScroll)
         }
 
     },[])
 
     if(!user) return <Header />
     else return (
-        <div className="browse-header">
+        <div className={`browse-header ${windowScroll ? 'scrolled' : 'none'}`}>
             <div className="browse-header-left">
                 <img src={netflixLogo} alt="netflix-logo" className='netflix-logo' />
                 <div className="browse-header-nav">

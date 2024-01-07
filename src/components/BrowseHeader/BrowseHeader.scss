@@ -5,6 +5,7 @@ $NetflixSansLight: 'NetflixSansLight';
 $NetflixSansMedium: 'NetflixSansMedium';
 $NetflixSansBold: 'NetflixSansBold';
 $transparent-black: rgba(0,0,0,0.85);
+$transparent-black-1: rgba(0,0,0,0.9);
 
 .browse-header 
 {
@@ -17,6 +18,12 @@ $transparent-black: rgba(0,0,0,0.85);
     min-width: 350px;
     position:fixed;
     z-index: 99;
+    transition: all 200ms ease-in-out;
+}
+.scrolled 
+{
+    background: none;
+    background-color: $transparent-black-1 !important;
 }
 .browse-avatar
 {
