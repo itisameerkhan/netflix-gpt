@@ -1,7 +1,6 @@
 import useMovieTrailer from '../../hooks/useMovieTrailer';
 import './VideoBackground.scss';
 import { useSelector } from 'react-redux';
-import leoSong from '../../video/trailer.mp4';
 
 
 const VideoBackground = ({movieId}) => {
