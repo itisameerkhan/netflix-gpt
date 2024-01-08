@@ -1,9 +1,12 @@
+import GPTMovieSuggestions from '../GPTMovieSuggestions/GPTMovieSuggestions';
+import GPTSearchBar from '../GPTSearchBar/GPTSearchBar';
 import './GPTSearch.scss';
 
 const GPTSearch = () => {
     return (
         <div className="gpt-search">
-            <h1>GPT search</h1>
+            <GPTSearchBar />
+            <GPTMovieSuggestions />
         </div>
     )
 }

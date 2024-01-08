@@ -1,0 +1,72 @@
+@font-face 
+{
+    font-family: 'NetflixSansMedium';
+    src: url('../../fonts/NetflixSans/NetflixSans-Medium.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansBold';
+    src: url('../../fonts/NetflixSans/NetflixSans-Bold.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansLight';
+    src: url('../../fonts/NetflixSans/NetflixSans-Light.otf');;
+}
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+$transparent-black: rgba(0,0,0,0.9);
+$red: #dc2626;
+
+.gpt-search 
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    z-index: -1;
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+}
+.gpt-form 
+{
+    background-color: $transparent-black;
+    padding:1rem 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 9rem;
+    border-radius: 8px;
+
+    input 
+    {
+        width: 30rem;
+        padding: 0.8rem 1rem;
+        outline: none;
+        border-radius: 5px 0 0 5px;
+        border:none;
+        font-family: $NetflixSansLight;
+        font-size: 1rem;
+        background-color: gray;
+        color:white;
+
+        &::placeholder { color: white;}
+    }
+    button 
+    {
+        background-color: $red;
+        padding: 0.80rem 2rem;
+        border:none;
+        font-family: $NetflixSansLight;
+        color:white;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 1rem;
+
+        &:hover { background-color: #f94343; }
+    }
+}

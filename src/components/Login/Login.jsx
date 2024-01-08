@@ -87,6 +87,7 @@ const Login = () => {
         <div className="login">
             {/* <Header /> */}
             <BrowseHeader />
+            {/* <div className="login-form-overlay"></div> */}
             <div className="login-form-div">
                 <form className='login-form' onSubmit={(e) => e.preventDefault()}>
                 {firebaseAuth[0] && <p className='error-login-msg'>{firebaseAuth[1]}</p>}
