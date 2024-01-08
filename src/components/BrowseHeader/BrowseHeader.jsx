@@ -87,7 +87,7 @@ const BrowseHeader = () => {
                 </div>
             </div>
             <div className="browse-header-right">
-                <i className="fa-solid fa-magnifying-glass"></i>
+                <p className="gpt-search-btn">GPT</p>
                 <div 
                     className="avatar-div"
                     onMouseEnter={() => setAvatarHover(true)}

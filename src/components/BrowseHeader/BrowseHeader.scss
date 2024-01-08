@@ -6,6 +6,7 @@ $NetflixSansMedium: 'NetflixSansMedium';
 $NetflixSansBold: 'NetflixSansBold';
 $transparent-black: rgba(0,0,0,0.85);
 $transparent-black-1: rgba(0,0,0,0.9);
+$blue: #19c37d;
 
 .browse-header 
 {
@@ -131,6 +132,24 @@ $transparent-black-1: rgba(0,0,0,0.9);
 .home-li-arrow 
 {
     display: none;
+}
+.gpt-search-btn
+{
+    border:3px solid $blue;
+    font-family: $NetflixSansBold;
+    color: $blue; 
+    padding: 0.6rem 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+
+    &:hover 
+    {
+        background-color: $blue;
+        color:white;
+        box-shadow: 0 0 2rem 0.2rem $blue;
+        text-shadow: 0 0 2rem 0.2rem white;
+    }
 }
 @media screen and (max-width: 900px)
 {

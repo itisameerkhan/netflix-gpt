@@ -6,6 +6,7 @@ import SecondaryContainer from '../SecondaryContainer/SecondaryContainer';
 import usePopularMovies from '../../hooks/usePopularMovies';
 import useTopRatedTV from '../../hooks/useTopRatedTV';
 import useUpcomingMovies from '../../hooks/useUpcomingMovies';
+import GPTSearch from '../GPTSearch/GPTSearch';
 
 const Browse = () => {
 
