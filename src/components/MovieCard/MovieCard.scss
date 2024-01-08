@@ -1,10 +1,84 @@
+@import url(../Login/Login.scss);
+@import url(../Header/Header.scss);
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+$transparent-black: rgba(0,0,0,0.85);
+$transparent-black-1: rgba(0,0,0,0.9);
+
+
 .movie-card-1-img 
 {
     width: 240px;
     border-radius: 5px;
 }
-
 .movie-card 
 {
-    width: 200px;
+    width: 100%;
+    height: 360px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    position: relative;
+
+    &:hover 
+    {
+        transform: scale(0.94);
+
+        .img-card-desc
+        {
+            bottom: 0.2rem;
+            visibility: visible;
+        }
+    }
+}
+.img-card-desc 
+{
+    position: absolute;
+    // bottom: 0.2rem;
+    bottom: -6rem;
+    width: 100%;
+    transition: all 200ms ease-in-out;
+    padding:0.5rem;
+    visibility: hidden;
+
+    span, i
+    {
+        background-color: black;
+        border-radius: 50%;
+        color:white;
+        padding:5px;
+        font-size: 1.5rem;
+        border:2px solid white;
+    }
+    i
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.2rem;
+        font-size: 1.2rem !important;
+    }
+}
+.inside-left
+{
+    display: flex;
+    gap: 10px;
+}
+.inside-img-card 
+{
+    display: flex;
+    justify-content: space-between;
+}
+.play-arrow
+{
+    background-color: white !important;
+    color:black !important;
+}
+.vote-avg 
+{
+    font-family: $NetflixSansMedium;
+    color: green;
+    font-weight: bold;
+    padding-top: 5px;
 }
