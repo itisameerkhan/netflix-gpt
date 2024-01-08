@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { addUser, removeUser } from '../../utils/userSlice';
 import { useDispatch } from 'react-redux';
 import { toggleGPTSearchView } from '../../utils/gptSlice';
+import { SUPPORTED_LANG } from '../../utils/constants';
+import { changeLanguage } from '../../utils/configSlice';
 
 
 const BrowseHeader = () => {
@@ -68,6 +70,10 @@ const BrowseHeader = () => {
         dispatch(toggleGPTSearchView());
     }
 
+    const handleLangChange = (data) => {
+        dispatch(changeLanguage(data))
+    }
+
     if(!user) return <Header />
     else return (
         <div className={`browse-header ${windowScroll ? 'scrolled' : 'none'}`}>
@@ -86,8 +92,16 @@ const BrowseHeader = () => {
                             style={{display: `${windoWidth <= 900 ? (homeNavRes ? 'flex' : 'none') : 'flex'}`}}>
                             <li>TV Shows</li>
                             <li>Movies</li>
-                            <li>News & Popular</li>
                             <li>My List</li>
+                            <li>
+                                <select 
+                                    className='header-select'
+                                    onChange={(e) => handleLangChange(e.target.value)}>
+                                    {SUPPORTED_LANG.map((data) => (
+                                        <option value={data} key={data}>{data}</option>
+                                    ))}
+                                </select>
+                            </li>
                         </div>
                     </div>
                 </div>

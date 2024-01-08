@@ -7,7 +7,6 @@ import '@splidejs/splide/dist/css/splide.min.css';
 const MovieList = ({title, movies}) => {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    console.log('movie list component rendered');
 
     useEffect(() => {
         const calculateWindowWith = () => { setWindowWidth(window.innerWidth) };

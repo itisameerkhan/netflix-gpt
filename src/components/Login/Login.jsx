@@ -3,10 +3,10 @@ import { useRef, useState } from 'react';
 import { validateEmail, validatePassword, validateUsername } from '../../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../../utils/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../../utils/userSlice';
 import BrowseHeader from '../BrowseHeader/BrowseHeader';
-
+import { lang } from '../../utils/languageConstants';
 
 const Login = () => {
 
@@ -16,6 +16,7 @@ const Login = () => {
     const [firebaseAuth, setFirebaseAuth] = useState([false, null]);
     const [loader, setLoader] = useState(false);
     const dispatch = useDispatch();
+    const currentLang = useSelector(store => store.config.lang);
 
     const username = useRef(null);
     const email = useRef(null);
@@ -63,7 +64,7 @@ const Login = () => {
             })
             .catch((error) => {
                 setLoader(false);
-                setFirebaseAuth([true, "Sorry, This email is already in use. Please try again with another email address or login with the account."]);
+                setFirebaseAuth([true, lang[currentLang].login.account_already_found]);
                 // navigate('/');
             });
         } else {
@@ -76,7 +77,7 @@ const Login = () => {
                 // navigate('/browse');
             })
             .catch((error) => {
-                setFirebaseAuth([true, `Sorry, we can't find an account with this email address. Please try again or create a new account.`]);
+                setFirebaseAuth([true, lang[currentLang].login.account_not_found]);
                 setLoader(false);
                 // navigate('/');
             });
@@ -91,34 +92,35 @@ const Login = () => {
             <div className="login-form-div">
                 <form className='login-form' onSubmit={(e) => e.preventDefault()}>
                 {firebaseAuth[0] && <p className='error-login-msg'>{firebaseAuth[1]}</p>}
-                    <label>{signIn ? "Sign In" : "Sign Up"}</label>
+                    <label>{signIn ? lang[currentLang].login.signIn : lang[currentLang].login.signOut}</label>
                     <input 
                         type="text" 
-                        placeholder='Username' 
+                        placeholder= {lang[currentLang].login.username}  // 'Username' 
                         style={{display: signIn === true ? 'none' : 'block'}}
                         ref={username} 
                         className={`${errorStatus[2] ? 'none' : 'error-line'} password-int`}
                     />
-                    {!signIn && !errorStatus[2] && <p className='error-message'>Please enter a valid username</p>}
+                    {!signIn && !errorStatus[2] && <p className='error-message'>{lang[currentLang].login.valid_username}</p>}
                     <input 
                         type="text" 
-                        placeholder='Email address' 
+                        placeholder= {lang[currentLang].login.emailaddress}
                         ref={email}
                         className={`${errorStatus[0] ? 'none' : 'error-line'}`}
                     />
-                    {errorStatus[0] === false &&  <p className='error-message'>Please enter a valid email address</p>}
+                    {errorStatus[0] === false &&  <p className='error-message'>{lang[currentLang].login.valid_email}</p>}
                     <div className="password-input">
                         <input 
                             type={passwordVisible ? 'text' : 'password'} 
-                            placeholder='Password' ref={password} 
+                            placeholder= {lang[currentLang].login.password}
+                            ref={password} 
                             className={`${errorStatus[1] ? 'none' : 'error-line'} password-int`}
                         />
                         <span 
                             onClick={() => setPasswordVisible(!passwordVisible)}>
-                                {passwordVisible ? "HIDE" : "SHOW"}
+                                {passwordVisible ? lang[currentLang].login.hide : lang[currentLang].login.show}
                         </span>
                     </div>
-                    {errorStatus[1] === false && <p className='error-message'>Your password must contain between 6 and 60 characters.</p>}
+                    {errorStatus[1] === false && <p className='error-message'>{lang[currentLang].login.valid_pass}</p>}
                     <button 
                         className='sign-in-btn'
                         onClick={() => {
@@ -127,10 +129,10 @@ const Login = () => {
                         }}>
                             {loader === true ? 
                             <span className="loader"></span> :
-                            <span>{signIn === true ? "Sign In" : "Sign Up"}</span> }
+                            <span>{signIn === true ? lang[currentLang].login.signIn : lang[currentLang].login.signOut }</span> }
                     </button>
-                    <p className='new-to-netflix'>{signIn ? "New to Netflix?" : "Already registered?"} 
-                        <span onClick={handleClick}>{signIn ? "Sign up now." : "Sign in now."}</span>
+                    <p className='new-to-netflix'>{signIn ? lang[currentLang].login.new_to_netflix : lang[currentLang].login.already_registered } 
+                        <span onClick={handleClick}>{signIn ? lang[currentLang].login.sign_up_now : lang[currentLang].login.sign_in_now}</span>
                     </p>
                 </form>
             </div>
