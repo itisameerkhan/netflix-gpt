@@ -74,6 +74,8 @@ const BrowseHeader = () => {
         dispatch(changeLanguage(data))
     }
 
+    const username = useSelector((store) => store.user?.displayName);
+
     if(!user) return <Header />
     else return (
         <div className={`browse-header ${windowScroll ? 'scrolled' : 'none'}`}>
@@ -120,6 +122,7 @@ const BrowseHeader = () => {
                     <div 
                         className="browse-sign-in"
                         style={{display: `${avatarHover ? 'block' : 'none'}`}}>
+                        <span>Hi, {username} !</span>
                         <p onClick={handleSignOut}>Sign out of Netflix</p>
                     </div>
                 </div>
