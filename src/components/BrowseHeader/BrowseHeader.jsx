@@ -9,6 +9,7 @@ import Header from '../Header/Header';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../../utils/userSlice';
 import { useDispatch } from 'react-redux';
+import { toggleGPTSearchView } from '../../utils/gptSlice';
 
 
 const BrowseHeader = () => {
@@ -19,6 +20,7 @@ const BrowseHeader = () => {
     const [windowScroll, setWindowScroll] = useState(false);
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
+    const gptSearch = useSelector(store => store.gpt.showGPTSearch);
     const dispatch = useDispatch();
 
     const handleSignOut = () => {
@@ -62,6 +64,10 @@ const BrowseHeader = () => {
 
     },[])
 
+    const handleGPTButtonClick = () => {
+        dispatch(toggleGPTSearchView());
+    }
+
     if(!user) return <Header />
     else return (
         <div className={`browse-header ${windowScroll ? 'scrolled' : 'none'}`}>
@@ -87,7 +93,10 @@ const BrowseHeader = () => {
                 </div>
             </div>
             <div className="browse-header-right">
-                <p className="gpt-search-btn">GPT</p>
+                <p 
+                    className={`gpt-search-btn ${gptSearch ? 'gpt-btn-selected' : 'none'}`}
+                    onClick={handleGPTButtonClick}
+                >GPT</p>
                 <div 
                     className="avatar-div"
                     onMouseEnter={() => setAvatarHover(true)}

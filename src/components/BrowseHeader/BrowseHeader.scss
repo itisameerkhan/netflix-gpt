@@ -151,6 +151,13 @@ $blue: #19c37d;
         text-shadow: 0 0 2rem 0.2rem white;
     }
 }
+.gpt-btn-selected
+{
+    background-color: $blue;
+    color:white;
+    box-shadow: 0 0 2rem 0.2rem $blue;
+    text-shadow: 0 0 2rem 0.2rem white;
+}
 @media screen and (max-width: 900px)
 {
     .browse-header-nav-ul 
