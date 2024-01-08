@@ -1,3 +1,12 @@
+@import url(../Login/Login.scss);
+@import url(../Header/Header.scss);
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+$transparent-black: rgba(0,0,0,0.85);
+$transparent-black-1: rgba(0,0,0,0.9);
+
 .movies-cards-1
 {
     display: flex;
@@ -9,4 +18,11 @@
 .splide 
 {
     width: 100%;
+    touch-action: pan-y;
+}
+.title-h1
+{
+    font-family: $NetflixSansMedium;
+    font-size: 2rem;
+    padding:0 1.5rem;
 }

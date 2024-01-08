@@ -6,6 +6,7 @@ import '@splidejs/splide/dist/css/splide.min.css';
 const MovieList = ({title, movies}) => {
     return movies &&  (
         <div className="movie-list">
+            <p className='title-h1'>{title}</p>
             <div className="movies-cards-1">
                 <Splide options={{
                     pagination:false,
