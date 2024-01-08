@@ -20,6 +20,9 @@ $transparent-black-1: rgba(0,0,0,0.9);
     cursor: pointer;
     transition: all 200ms ease-in-out;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
 
     &:hover 
     {
@@ -81,4 +84,50 @@ $transparent-black-1: rgba(0,0,0,0.9);
     color: green;
     font-weight: bold;
     padding-top: 5px;
+}
+@media screen and (max-width: 650px)
+{
+    .movie-card-1-img 
+    {
+        width: 150px;
+    }
+    .movie-card 
+    {
+        height: 100%;
+    }
+    .img-card-desc 
+    {
+        position: absolute;
+        // bottom: 0.2rem;
+        bottom: -6rem;
+        width: 100%;
+        transition: all 200ms ease-in-out;
+        padding:0.1rem;
+        visibility: hidden;
+
+        span, i
+        {
+            background-color: black;
+            border-radius: 50%;
+            color:white;
+            padding:2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            border:2px solid white;
+        }
+        i
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.6rem;
+            font-size: 0.8rem !important;
+        }
+        .vote-avg
+        {
+            font-size: 0.8rem;
+        }
+    }
 }

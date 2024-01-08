@@ -2,6 +2,7 @@ import './MovieCard.scss';
 import { TMDB_IMAGE_CDN } from '../../utils/constants';
 
 const MovieCard = ({data}) => {
+
     return (
         <div className="movie-card">
             <img 
@@ -15,7 +16,7 @@ const MovieCard = ({data}) => {
                         <span className="material-symbols-outlined play-arrow">play_arrow</span>
                         <span className="material-symbols-outlined">add</span>
                         <i className="fa-solid fa-thumbs-up"></i>                </div>
-                <span className="material-symbols-outlined">expand_more</span>
+                <span className="material-symbols-outlined expand-more">expand_more</span>
                 </div>
                 <p className='vote-avg'>{(data.vote_average).toFixed(1)} IMDB</p>
             </div>
