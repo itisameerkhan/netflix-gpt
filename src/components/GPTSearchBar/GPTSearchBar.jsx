@@ -12,7 +12,7 @@ const GPTSearchBar = () => {
                 <button>Search</button>
             </form>
         </div>
-    )
+    );
 }
 
 export default GPTSearchBar;
