@@ -15,7 +15,7 @@ const useUpcomingMovies = () => {
     }
 
     useEffect(() => {
-        if(!addUpcomingMovies) getUpcomingMovies();
+        if(!upcomingMovies) getUpcomingMovies();
     },[])
 }
 
