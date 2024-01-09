@@ -3,7 +3,7 @@ import { TMDB_IMAGE_CDN } from '../../utils/constants';
 
 const MovieCard = ({data}) => {
 
-    return (
+    return data?.poster_path && (
         <div className="movie-card">
             <img 
                 src={TMDB_IMAGE_CDN + data?.poster_path} 

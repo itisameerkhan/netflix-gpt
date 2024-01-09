@@ -1,25 +1,47 @@
 import { useRef } from 'react';
 import './GPTSearchBar.scss';
 import openai from '../../utils/openai';
+import { API_OPTIONS } from '../../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addGPTMovieResult } from '../../utils/gptSlice';
 
 const GPTSearchBar = () => {
 
     const searchText = useRef(null);
+    const dispatch = useDispatch();
+
+    const searchMovieTMDB = async (movie) => {
+        const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&page=1`, API_OPTIONS);
+        const json = await data.json();
+        // console.log(json);
+        return json.results;
+    }
 
     const handleGPTSearch = async () => {
         // console.log(searchText.current.value);
         // make an API call to GPT API and get movie results
 
-        const gptQuery = "Act as Movie Recommendation system and suggest some movies for the query : " + searchText.current.value + ". only give me names of 5 movies. comma separated. like the example result given ahead. Example Result: Ironman, Spiderman, Avengers, Taxi driver, Titanic";
+        // const gptQuery = "Act as Movie Recommendation system and suggest some movies for the query : " + searchText.current.value + ". only give me names of 5 movies. comma separated. like the example result given ahead. Example Result: Ironman, Spiderman, Avengers, Taxi driver, Titanic";
 
-        const getResults = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: gptQuery }],
-            model: 'gpt-3.5-turbo',
-        });
+        // const getResults = await openai.chat.completions.create({
+        //     messages: [{ role: 'user', content: gptQuery }],
+        //     model: 'gpt-3.5-turbo',
+        // });
 
         // if(!getResults.choices) { }
-        console.log(getResults.choices?.[0]?.message?.content);
+        // const gptMovies = getResults.choices?.[0]?.message?.content.split(',');
+
+        // const gptMovies = ["Iron man", "Spider man", "Thor", "Hulk", "Avengers"];
+
+        const gptMovies = [searchText.current.value];
+
+        const promiseArray = gptMovies.map((data) => searchMovieTMDB(data));
+
+        const TMDBResults = await Promise.all(promiseArray);
+        dispatch(addGPTMovieResult({movieNames: gptMovies, movieResults: TMDBResults}));
+        console.log(TMDBResults);
     }
+
 
     return (
         <div className="gpt-search-bar">

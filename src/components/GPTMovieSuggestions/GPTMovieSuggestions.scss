@@ -1,0 +1,26 @@
+@font-face 
+{
+    font-family: 'NetflixSansMedium';
+    src: url('../../fonts/NetflixSans/NetflixSans-Medium.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansBold';
+    src: url('../../fonts/NetflixSans/NetflixSans-Bold.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansLight';
+    src: url('../../fonts/NetflixSans/NetflixSans-Light.otf');;
+}
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+
+.gpt-movie-suggestions 
+{
+    background-color: rgba(0,0,0,0.85);
+    // padding: 1rem 2rem;
+    width: 100vw;
+}
