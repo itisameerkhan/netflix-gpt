@@ -11,3 +11,5 @@ export const API_OPTIONS = {
 export const TMDB_IMAGE_CDN = 'https://image.tmdb.org/t/p/w500/';
 
 export const SUPPORTED_LANG = ["english", "tamil", "hindi"];
+
+export const OPENAI_KEY = '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';
