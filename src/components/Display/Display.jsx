@@ -7,15 +7,16 @@ import Header from '../Header/Header';
 const Display = () => {
 
     const movieID = useParams();
-    console.log(Object.keys(movieID).length == 0);
 
     const moviesID = useParams().movieID.split('-');
-    let datas = '';
+    
+    let datas = 'empty';
 
     if(moviesID[0] === '') datas = useSelector(store => store.movies.addNowPlayingMovies);
     else if(moviesID[0] === 'Popular Movies') datas = useSelector(store => store.movies.addPopularMovies);
     else if(moviesID[0] === 'Popular TV Series') datas = useSelector(store => store.movies.addTopRatedTV);
     else if(moviesID[0] === 'Upcoming Movies') datas = useSelector(store => store.movies.addUpcomingMovies); 
+    else if(moviesID[0] == 'Search Results') datas = useSelector(store => store.gpt.movieResults[0]);
 
     let moviesData = null;
 
