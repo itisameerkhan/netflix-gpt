@@ -13,6 +13,7 @@ import Footer from '../Footer/Footer';
 const Browse = () => {
 
     const showGPT = useSelector(store => store.gpt.showGPTSearch);
+    const movies = useSelector(store => store.movies.addNowPlayingMovies);
 
     useNowPlayingMovies();
     usePopularMovies();
@@ -27,7 +28,7 @@ const Browse = () => {
                 (<>
                     <MainContainer />
                     <SecondaryContainer />
-                    <Footer />
+                    {movies && <Footer />}
                 </>)
             }
         </div>

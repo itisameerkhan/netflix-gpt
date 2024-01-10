@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 import './MovieList.scss';
+import { Link } from 'react-router-dom';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
@@ -33,7 +34,9 @@ const MovieList = ({title, movies}) => {
                 }}>
                     {movies.map((movie) => (
                         <SplideSlide key={movie?.id}>
-                            <MovieCard key={movie?.id} data={movie} />
+                            <Link to={`${movie.id}`}>
+                                <MovieCard key={movie?.id} data={movie} />
+                            </Link>
                         </SplideSlide>
                     ))}
                 </Splide>

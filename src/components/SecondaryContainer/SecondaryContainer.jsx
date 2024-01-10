@@ -6,6 +6,8 @@ const SecondaryContainer = () => {
 
     const movies = useSelector(store => store.movies);
 
+    if(!movies) return <MovieSkeleton />
+
     return (
         <div className="secondary-container">
             <MovieList title={""} movies={movies.addNowPlayingMovies} />
