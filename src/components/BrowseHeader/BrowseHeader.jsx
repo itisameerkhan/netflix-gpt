@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { toggleGPTSearchView } from '../../utils/gptSlice';
 import { SUPPORTED_LANG } from '../../utils/constants';
 import { changeLanguage } from '../../utils/configSlice';
+import { lang } from '../../utils/languageConstants';
 
 
 const BrowseHeader = () => {
@@ -23,6 +24,7 @@ const BrowseHeader = () => {
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
     const gptSearch = useSelector(store => store.gpt.showGPTSearch);
+    const currentLang = useSelector(store => store.config.lang)
     const dispatch = useDispatch();
 
     const handleSignOut = () => {
@@ -91,16 +93,16 @@ const BrowseHeader = () => {
                         <li     
                             className='home-li'
                             onClick={() => setHomeNavRes(!homeNavRes)}>
-                                Home
+                                {lang[currentLang].main.home}
                                 <i className={`fa-solid ${homeNavRes ? 'fa-sort-up' : 'fa-sort-down'} home-li-arrow`}></i>
                         </li>
                         <div 
                             className="li-div-1"
                             style={{display: `${windoWidth <= 900 ? (homeNavRes ? 'flex' : 'none') : 'flex'}`}}>
-                            <li>TV Shows</li>
-                            <li>Movies</li>
+                            <li>{lang[currentLang].main.tv_shows}</li>
+                            <li>{lang[currentLang].main.movies}</li>
                             <Link to={'/browse/favorite'}>
-                                <li>My List</li>
+                                <li>{lang[currentLang].main.my_list}</li>
                             </Link>
                             <li>
                                 <select 
@@ -129,8 +131,8 @@ const BrowseHeader = () => {
                     <div 
                         className="browse-sign-in"
                         style={{display: `${avatarHover ? 'block' : 'none'}`}}>
-                        <span>Hi, {username} !</span>
-                        <p onClick={handleSignOut}>Sign out of Netflix</p>
+                        <span>{lang[currentLang].main.hi} {username} !</span>
+                        <p onClick={handleSignOut}>{lang[currentLang].main.sign_out}</p>
                     </div>
                 </div>
             </div>

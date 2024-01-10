@@ -2,13 +2,15 @@ import { useRef } from 'react';
 import './GPTSearchBar.scss';
 import openai from '../../utils/openai';
 import { API_OPTIONS } from '../../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addGPTMovieResult } from '../../utils/gptSlice';
+import { lang } from '../../utils/languageConstants';
 
 const GPTSearchBar = () => {
 
     const searchText = useRef(null);
     const dispatch = useDispatch();
+    const currentLang = useSelector(store => store.config.lang);
 
     const searchMovieTMDB = async (movie) => {
         const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&page=1`, API_OPTIONS);
@@ -50,13 +52,13 @@ const GPTSearchBar = () => {
                 onSubmit={(e) => e.preventDefault()}>
                 <input 
                     type="text" 
-                    placeholder='What would you like to watch today?'
+                    placeholder={lang[currentLang].gpt.desc}
                     className='gpt-input'
                     ref={searchText}
                 />
                 <button 
                 onClick={handleGPTSearch}>
-                    Search
+                    {lang[currentLang].gpt.search}
                 </button>
             </form>
         </div>

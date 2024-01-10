@@ -17,6 +17,21 @@ export const lang = {
             valid_pass: "Your password must contain between 6 and 60 characters.",
             account_not_found: "Sorry, we can't find an account with this email address. Please try again or create a new account.",
             account_already_found: "Sorry, This email is already in use. Please try again with another email address or login with the account."
+        },
+        main: {
+            home: 'Home',
+            tv_shows: 'TV Shows',
+            movies: 'Movies',
+            my_list: 'My List',
+            popular_movies: 'Popular Movies',
+            popular_tv: 'Popular TV Series',
+            upcoming_movies: 'Upcoming Movies',
+            hi: 'Hi',
+            sign_out: 'Sign out of Netflix'
+        },
+        gpt: {
+            desc: 'What would you like to watch today?',
+            search: 'search',
         }
     },
     tamil: {
@@ -37,6 +52,21 @@ export const lang = {
             valid_pass: "உங்கள் கடவுச்சொல்லில் 6 முதல் 60 எழுத்துகள் இருக்க வேண்டும்.",
             account_not_found: "மன்னிக்கவும், இந்த மின்னஞ்சல் முகவரியுடன் ஒரு கணக்கைக் கண்டுபிடிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும் அல்லது புதிய கணக்கை உருவாக்கவும்.",
             account_already_found: "மன்னிக்கவும், இந்த மின்னஞ்சல் ஏற்கனவே பயன்பாட்டில் உள்ளது. மற்றொரு மின்னஞ்சல் முகவரியுடன் மீண்டும் முயற்சிக்கவும் அல்லது கணக்கில் உள்நுழையவும்."
+        },
+        main: {
+            home: 'வீடு',
+            tv_shows: 'நிகழ்ச்சிகள்',
+            movies: 'திரைப்பட',
+            my_list: 'பட்டியல்',
+            popular_movies: 'பிரபலமான திரைப்படங்கள்',
+            popular_tv: 'பிரபலமான டிவி தொடர்',
+            upcoming_movies: 'வரவிருக்கும் திரைப்படங்கள்',
+            hi: 'வணக்கம்',
+            sign_out: 'வெளியேறு Netflix'
+        },
+        gpt: {
+            desc: 'இன்று நீங்கள் எதைப் பார்க்க விரும்புகிறீர்கள்?',
+            search: 'தேடல்',
         }
     },
     hindi: {
@@ -57,6 +87,21 @@ export const lang = {
             valid_pass: "आपके पासवर्ड में 6 से 60 अक्षर के बीच होना चाहिए।.",
             account_not_found: "क्षमा करें, हमें इस ईमेल पते वाला कोई खाता नहीं मिल सका। कृपया पुनः प्रयास करें या एक नया खाता बनाएँ।",
             account_already_found: "क्षमा करें, यह ईमेल पहले से ही उपयोग में है। कृपया किसी अन्य ईमेल पते से पुनः प्रयास करें या खाते से लॉगिन करें।"
+        },
+        main: {
+            home: 'घर',
+            tv_shows: 'टीवी शो',
+            movies: 'चलचित्र',
+            my_list: 'मेरी सूची',
+            popular_movies: 'लोकप्रिय फ़िल्में',
+            popular_tv: 'लोकप्रिय टीवी श्रृंखला',
+            upcoming_movies: 'आने वाली फिल्में',
+            hi: 'नमस्ते',
+            sign_out: 'से साइन आउट करें Netflix'
+        },
+        gpt: {
+            desc: 'आज आप क्या देखना चाहेंगे?',
+            search: 'खोज',
         }
     },
 }
