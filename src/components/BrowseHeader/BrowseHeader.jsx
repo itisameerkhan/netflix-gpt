@@ -3,7 +3,7 @@ import netflixLogo from '../../assets/NetflixLogo.png';
 import avatar from '../../assets/avatar.png';
 import { useState } from 'react';
 import { getAuth, signOut,onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import { useEffect } from 'react';
@@ -34,16 +34,19 @@ const BrowseHeader = () => {
         });
     }
 
+    const movieID = useParams();
+
     useEffect(() => {
         const auth = getAuth();
         const unsubsribe = onAuthStateChanged(auth, (user) => {
         if (user) {
             const {uid, email, displayName, photoURL } = user;
             dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-            navigate('/browse');
+            if(Object.keys(movieID).length == 0) navigate('/browse')
+
         } else {
             dispatch(removeUser());
-            navigate('/')
+            navigate('/');
         }
         });
 
@@ -80,7 +83,9 @@ const BrowseHeader = () => {
     else return (
         <div className={`browse-header ${windowScroll ? 'scrolled' : 'none'}`}>
             <div className="browse-header-left">
-                <img src={netflixLogo} alt="netflix-logo" className='netflix-logo' />
+                <Link to={'/browse'}>
+                    <img src={netflixLogo} alt="netflix-logo" className='netflix-logo' />
+                </Link>
                 <div className="browse-header-nav">
                     <div className="browse-header-nav-ul">
                         <li     

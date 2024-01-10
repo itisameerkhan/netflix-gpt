@@ -1,0 +1,132 @@
+@font-face 
+{
+    font-family: 'NetflixSansMedium';
+    src: url('../../fonts/NetflixSans/NetflixSans-Medium.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansBold';
+    src: url('../../fonts/NetflixSans/NetflixSans-Bold.otf');
+}
+@font-face 
+{
+    font-family: 'NetflixSansLight';
+    src: url('../../fonts/NetflixSans/NetflixSans-Light.otf');;
+}
+
+$NetflixSansLight: 'NetflixSansLight';
+$NetflixSansMedium: 'NetflixSansMedium';
+$NetflixSansBold: 'NetflixSansBold';
+$transparent-black: rgba(0,0,0,0.85);
+
+.display-container 
+{
+    color:white;
+    // border:2px solid red;
+    position: relative;
+    height: 100vh;
+}
+.display-bg
+{
+    height: 100vh;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    z-index: -2;
+}
+.bg-overlay-1
+{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(to right, #000, transparent);
+    z-index: -1; 
+}
+.display-inner 
+{
+    height: 80vh;
+    padding-left: 2rem;
+    margin: auto;
+    display: flex;
+    gap: 2rem;
+    max-width: 80rem;
+    margin-top: 2rem;
+    // padding-top: 0rem;
+    align-items: start;
+    font-family: $NetflixSansLight;
+}
+.display-left
+{
+    width: 60%;
+    height: 90%;
+    // margin-top: 8%;
+    // padding-top: 8%;
+    margin-left: 4rem;
+    // margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.display-right 
+{
+    width: 30%;
+}
+.display-poster
+{
+    width: 18rem;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.title 
+{
+    font-family: $NetflixSansMedium;
+    font-size: 2.2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 75%;
+}
+.overview 
+{
+    font-family: $NetflixSansLight;
+    font-size: 1rem;
+    width: 70%;
+    line-height: 30px;
+    margin-bottom: 1rem;
+}
+.first-air-date 
+{
+    padding: 0.2rem 0;
+    margin-bottom: 10px;;
+}
+.description 
+{
+    display: flex;
+    gap: 30px;
+
+    p 
+    {
+        display: flex;
+        align-items: center;
+
+        span 
+        {
+            background-color: white;
+            color:black;
+            padding:5px;
+            border-radius: 50%;
+            border: 2px solid black;
+            margin-right: 10px;
+        }
+        .fav 
+        {
+            cursor: pointer;
+            &:hover 
+            {
+                background-color:red;
+                color:white;
+            }
+        }
+    }
+}

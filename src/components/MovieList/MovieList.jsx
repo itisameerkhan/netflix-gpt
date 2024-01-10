@@ -34,7 +34,7 @@ const MovieList = ({title, movies}) => {
                 }}>
                     {movies.map((movie) => (
                         <SplideSlide key={movie?.id}>
-                            <Link to={`${movie.id}`}>
+                            <Link to={`${title}-${movie.id}`}>
                                 <MovieCard key={movie?.id} data={movie} />
                             </Link>
                         </SplideSlide>
