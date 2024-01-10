@@ -1,14 +1,16 @@
 import { useParams } from 'react-router-dom';
 import './Display.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TMDB_IMAGE_CDN } from '../../utils/constants';
 import Header from '../Header/Header';
+import { useState } from 'react';
+import { addFavorite } from '../../utils/favoriteSlice';
 
 const Display = () => {
 
-    const movieID = useParams();
-
     const moviesID = useParams().movieID.split('-');
+    const [click, setClick] = useState(false);
+    const dispatch = useDispatch();
     
     let datas = 'empty';
 
@@ -25,6 +27,12 @@ const Display = () => {
             moviesData = data;
             break;
         }
+    }
+
+    const handleClick = () => {
+
+        setClick(!click);
+        dispatch(addFavorite(moviesData));
     }
 
     return (
@@ -55,7 +63,9 @@ const Display = () => {
                         {moviesData?.vote_count}
                         </p>
                         <p>
-                        <span className="material-symbols-outlined fav">favorite</span>
+                        <i 
+                            className={`fa-solid fa-heart ${click ? 'clicked' : 'none'}` }
+                            onClick={handleClick}></i>                        
                         </p>
                     </div>
                 </div>

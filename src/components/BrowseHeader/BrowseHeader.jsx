@@ -99,7 +99,9 @@ const BrowseHeader = () => {
                             style={{display: `${windoWidth <= 900 ? (homeNavRes ? 'flex' : 'none') : 'flex'}`}}>
                             <li>TV Shows</li>
                             <li>Movies</li>
-                            <li>My List</li>
+                            <Link to={'/browse/favorite'}>
+                                <li>My List</li>
+                            </Link>
                             <li>
                                 <select 
                                     className='header-select'
