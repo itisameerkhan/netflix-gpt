@@ -54,5 +54,8 @@
     .video-background-iframe
     {
         margin-top: 2rem;
+        aspect-ratio: 9/16;
+        height: 50rem;
+        border:2px solid red;
     }
 }
